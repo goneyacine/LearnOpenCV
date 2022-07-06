@@ -14,3 +14,5 @@ Mat LoadImg();
 bool SaveImg(Mat img);
 
 void ToGrayScale();
+
+void Blur();

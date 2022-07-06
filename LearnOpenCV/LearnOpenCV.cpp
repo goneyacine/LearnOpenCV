@@ -10,7 +10,7 @@ void StartUp()
 	std::cout << "Hello" << "\n";
 	std::cout << "What do you wanna do ?" << "\n";
 
-	std::cout << "Enter 1 for ConvertToGrayScale" << "\n";
+	std::cout << "Enter 1 for ConvertToGrayScale, 2 for Blur" << "\n";
 
 	int choice;
 	std::cin >> choice;
@@ -19,6 +19,9 @@ void StartUp()
 	{
 	case 1 :
 		ToGrayScale();
+		break;
+	case 2:
+		Blur();
 		break;
 	}
 }
@@ -52,4 +55,21 @@ void ToGrayScale()
 
 	SaveImg(outputImg);
 	std::cout << "IMAGE SAVE SUCCEFULLY " << "\n";
+}
+
+void Blur()
+{
+	Mat srcImg = LoadImg();
+	std::cout << "IMAGE LOADED SUCCEFULLY" << "\n";
+
+	std::cout << "Enter kernel size " << "\n";
+	int kernelSize; 
+	std::cin >> kernelSize;
+
+	Mat outputImg;
+	blur(srcImg, outputImg, Size(kernelSize,kernelSize));
+
+	SaveImg(outputImg);
+	std::cout << "IMAGE SAVED SUCCEFULLY" << "\n";
+
 }
