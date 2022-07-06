@@ -10,7 +10,7 @@ void StartUp()
 	std::cout << "Hello" << "\n";
 	std::cout << "What do you wanna do ?" << "\n";
 
-	std::cout << "Enter 1 for ConvertToGrayScale, 2 for Blur" << "\n";
+	std::cout << "Enter 1 for ConvertToGrayScale, 2 for Blur, 3 for ToRed, 4 for ToGreen, 5 for ToBlue" << "\n";
 
 	int choice;
 	std::cin >> choice;
@@ -22,6 +22,15 @@ void StartUp()
 		break;
 	case 2:
 		Blur();
+		break;
+	case 3 :
+		ToRed();
+		break;
+	case 4: 
+		ToGreen();
+		break;
+	case 5 : 
+		ToBlue();
 		break;
 	}
 }
@@ -72,4 +81,34 @@ void Blur()
 	SaveImg(outputImg);
 	std::cout << "IMAGE SAVED SUCCEFULLY" << "\n";
 
+}
+
+void ToRed()
+{
+	Mat srcImg = LoadImg();
+	
+	Mat outputImg;
+	bitwise_and(srcImg, Mat(srcImg.rows, srcImg.cols, CV_8UC3, Scalar(0, 0, 255)), outputImg);
+
+	SaveImg(outputImg);
+}
+
+void ToGreen()
+{
+	Mat srcImg = LoadImg();
+
+	Mat outputImg;
+	bitwise_and(srcImg, Mat(srcImg.rows, srcImg.cols, CV_8UC3, Scalar(0,255, 0)), outputImg);
+
+	SaveImg(outputImg);
+}
+
+void ToBlue()
+{
+	Mat srcImg = LoadImg();
+
+	Mat outputImg;
+	bitwise_and(srcImg, Mat(srcImg.rows, srcImg.cols, CV_8UC3, Scalar(255, 0,0)), outputImg);
+
+	SaveImg(outputImg);
 }

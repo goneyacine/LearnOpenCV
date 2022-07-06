@@ -16,3 +16,7 @@ bool SaveImg(Mat img);
 void ToGrayScale();
 
 void Blur();
+
+void ToRed();
+void ToBlue();
+void ToGreen();
