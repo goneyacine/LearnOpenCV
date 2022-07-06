@@ -20,3 +20,5 @@ void Blur();
 void ToRed();
 void ToBlue();
 void ToGreen();
+
+void Subtract();

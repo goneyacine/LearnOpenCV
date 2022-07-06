@@ -10,7 +10,7 @@ void StartUp()
 	std::cout << "Hello" << "\n";
 	std::cout << "What do you wanna do ?" << "\n";
 
-	std::cout << "Enter 1 for ConvertToGrayScale, 2 for Blur, 3 for ToRed, 4 for ToGreen, 5 for ToBlue" << "\n";
+	std::cout << "Enter 1 for ConvertToGrayScale, 2 for Blur, 3 for ToRed, 4 for ToGreen, 5 for ToBlue, 6 for Surbtract" << "\n";
 
 	int choice;
 	std::cin >> choice;
@@ -31,6 +31,9 @@ void StartUp()
 		break;
 	case 5 : 
 		ToBlue();
+		break;
+	case 6 :
+		Subtract();
 		break;
 	}
 }
@@ -111,4 +114,21 @@ void ToBlue()
 	bitwise_and(srcImg, Mat(srcImg.rows, srcImg.cols, CV_8UC3, Scalar(255, 0,0)), outputImg);
 
 	SaveImg(outputImg);
+}
+
+void Subtract()
+{
+	Mat srcImg1 = LoadImg();
+	std::cout << "Image 1 loaded" << "\n";
+
+	Mat srcImg2 = LoadImg();
+	std::cout << "Image 2 loaded" << "\n";
+
+	Mat outputImg;
+
+	subtract(srcImg1, srcImg2, outputImg);
+
+
+	SaveImg(outputImg);
+
 }
